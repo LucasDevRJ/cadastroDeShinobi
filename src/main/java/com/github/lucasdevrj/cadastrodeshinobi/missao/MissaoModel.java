@@ -15,12 +15,18 @@ public class MissaoModel {
     private String nome;
     private String descricao;
     private String rank;
-    @OneToMany
+    @OneToMany(mappedBy = "missao") //uma missão pode ser feita por muitos ninjas
     private List<ShinobiModel> shinobis;
 
     public MissaoModel() {
 
     }
+
+    public MissaoModel(String nome, String rank) {
+        this.nome = nome;
+        this.rank = rank;
+    }
+
     public MissaoModel(String nome, String descricao, String rank) {
         this.nome = nome;
         this.descricao = descricao;

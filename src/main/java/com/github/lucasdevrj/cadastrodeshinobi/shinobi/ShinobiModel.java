@@ -13,7 +13,8 @@ public class ShinobiModel {
     private String nome;
     private String email;
     private int idade;
-    @OneToOne
+    @ManyToOne //muitos ninjas podem fazer uma missão
+    @JoinColumn(name = "missoes_id") //chave estrangeira
     private MissaoModel missao;
 
     public ShinobiModel() {
