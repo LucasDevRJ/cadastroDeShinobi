@@ -1,4 +1,4 @@
-package com.github.lucasdevrj.cadastrodeshinobi;
+package com.github.lucasdevrj.cadastrodeshinobi.shinobi;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
