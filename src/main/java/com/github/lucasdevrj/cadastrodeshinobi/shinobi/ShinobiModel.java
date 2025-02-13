@@ -1,5 +1,6 @@
-package com.github.lucasdevrj.cadastrodeshinobi;
+package com.github.lucasdevrj.cadastrodeshinobi.shinobi;
 
+import com.github.lucasdevrj.cadastrodeshinobi.missao.MissaoModel;
 import jakarta.persistence.*;
 
 @Entity //transforma um classe em uma entidade no Banco de Dados
@@ -12,6 +13,8 @@ public class ShinobiModel {
     private String nome;
     private String email;
     private int idade;
+    @OneToOne
+    private MissaoModel missao;
 
     public ShinobiModel() {
 
