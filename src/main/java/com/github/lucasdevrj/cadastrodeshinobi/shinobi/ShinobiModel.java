@@ -17,8 +17,12 @@ public class ShinobiModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY) //para gerar os ID's numericamente e sequenciais
     private Long id;
     private String nome;
+
+    @Column(unique = true) //valor não poderá ser replicado
     private String email;
+
     private int idade;
+
     @ManyToOne //muitos ninjas podem fazer uma missão
     @JoinColumn(name = "missoes_id") //chave estrangeira
     private MissaoModel missao;
