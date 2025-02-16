@@ -8,17 +8,21 @@ import lombok.NoArgsConstructor;
 
 @Entity //transforma um classe em uma entidade no Banco de Dados
 @Table(name = "tb_shinobis") //Criar a tabela com o nome definido
-@NoArgsConstructor //cria construtor sem argumentos
-@AllArgsConstructor //cria construtor com todos argumentos
-@Data //criar getters e setters
+@NoArgsConstructor //construtor sem atributos
+@AllArgsConstructor //construtor com todos os atributos
+@Data //Getters e Setters dos atributos
 public class ShinobiModel {
 
     @Id //para gerar ID's na entidade
     @GeneratedValue(strategy = GenerationType.IDENTITY) //para gerar os ID's numericamente e sequenciais
     private Long id;
     private String nome;
+
+    @Column(unique = true) //valor não poderá ser replicado
     private String email;
+
     private int idade;
+
     @ManyToOne //muitos ninjas podem fazer uma missão
     @JoinColumn(name = "missoes_id") //chave estrangeira
     private MissaoModel missao;
