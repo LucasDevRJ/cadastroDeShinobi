@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.*;
 public class MissaoController {
 
     //POST - Enviar requisição para criar uma Missão
-    @PostMapping("/criar")
-    public String criarMissao() {
+    @PostMapping("/adicionar")
+    public String adicionarMissao() {
         return "Missão criada com sucesso!";
     }
 
@@ -31,8 +31,8 @@ public class MissaoController {
     }
 
     //DELETE - Enviar requisição para excluir Missão por ID
-    @DeleteMapping("/excluir")
-    public String excluirMissao() {
+    @DeleteMapping("/deletar")
+    public String deletarMissao() {
         return "Missão deletada com sucesso!";
     }
 }
