@@ -1,5 +1,6 @@
 package com.github.lucasdevrj.cadastrodeshinobi.missao;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.github.lucasdevrj.cadastrodeshinobi.shinobi.ShinobiModel;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -22,5 +23,6 @@ public class MissaoModel {
     private String descricao;
     private String rank;
     @OneToMany(mappedBy = "missao") //uma missão pode ser feita por muitos ninjas
+    @JsonIgnore //para ignorar o loop de dados das Missões
     private List<ShinobiModel> shinobis;
 }
