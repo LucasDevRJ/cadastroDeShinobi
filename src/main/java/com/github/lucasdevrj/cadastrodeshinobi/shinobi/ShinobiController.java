@@ -2,9 +2,17 @@ package com.github.lucasdevrj.cadastrodeshinobi.shinobi;
 
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController //indica para a classe que ela é uma Controladora para a API
 @RequestMapping("/shinobis") //rota da qual acessaremos a API
 public class ShinobiController {
+
+    private ShinobiService shinobiService;
+
+    public ShinobiController(ShinobiService shinobiService) {
+        this.shinobiService = shinobiService;
+    }
 
     @GetMapping("/boasvindas") //pegar informação passada pelo método
     public String boasVindas() {
@@ -25,8 +33,8 @@ public class ShinobiController {
 
     //Exibir todos os Shinobis
     @GetMapping("/listar")
-    public String exibirShinobis() {
-        return "Todos os Shinobis exibidos com sucesso!";
+    public List<ShinobiModel> listarShinobis() {
+        return shinobiService.listarShinobis();
     }
 
     //Atualizar Shinobi
