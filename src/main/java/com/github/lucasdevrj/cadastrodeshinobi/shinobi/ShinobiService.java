@@ -3,6 +3,7 @@ package com.github.lucasdevrj.cadastrodeshinobi.shinobi;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ShinobiService {
@@ -15,5 +16,10 @@ public class ShinobiService {
 
     public List<ShinobiModel> listarShinobis() {
         return shinobiRepository.findAll();
+    }
+
+    public ShinobiModel exibirNinjaPorID(Long id) {
+        Optional<ShinobiModel> shinobiBuscadoPorID = shinobiRepository.findById(id);
+        return shinobiBuscadoPorID.orElse(null);
     }
 }

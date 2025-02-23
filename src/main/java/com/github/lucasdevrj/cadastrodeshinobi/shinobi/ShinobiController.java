@@ -26,9 +26,9 @@ public class ShinobiController {
     }
 
     //Procurar Shinobi por ID
-    @GetMapping("/exibirPorID")
-    public String exibirShinobiPorID() {
-        return "Shinobi exibido com sucesso!";
+    @GetMapping("/exibirPorID/{id}") //ID será passada pelo usuário
+    public ShinobiModel exibirShinobiPorID(@PathVariable Long id) {
+        return shinobiService.exibirNinjaPorID(id);
     }
 
     //Exibir todos os Shinobis
