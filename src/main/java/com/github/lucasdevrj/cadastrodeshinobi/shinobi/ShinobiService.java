@@ -22,4 +22,8 @@ public class ShinobiService {
         Optional<ShinobiModel> shinobiBuscadoPorID = shinobiRepository.findById(id);
         return shinobiBuscadoPorID.orElse(null);
     }
+
+    public ShinobiModel adicionarShinobi(ShinobiModel shinobi) {
+        return shinobiRepository.save(shinobi);
+    }
 }
