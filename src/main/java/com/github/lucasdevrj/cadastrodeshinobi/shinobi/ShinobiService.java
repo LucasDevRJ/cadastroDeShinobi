@@ -32,15 +32,11 @@ public class ShinobiService {
         shinobiRepository.deleteById(id);
     }
 
-    public ShinobiModel atualizar(Long id, ShinobiModel shinobiASerAtualizado) {
-        ShinobiModel shinobiAtualizado = exibirShinobiPorID(id);
-
-        shinobiAtualizado.setNome(shinobiASerAtualizado.getNome());
-        shinobiAtualizado.setEmail(shinobiASerAtualizado.getEmail());
-        shinobiAtualizado.setIdade(shinobiASerAtualizado.getIdade());
-        shinobiAtualizado.setImagemUrl(shinobiASerAtualizado.getImagemUrl());
-        shinobiAtualizado.setMissao(shinobiASerAtualizado.getMissao());
-
-        return shinobiRepository.save(shinobiAtualizado);
+    public ShinobiModel atualizar(Long id, ShinobiModel shinobiAtualizado) {
+        if (shinobiRepository.existsById(id)) {
+            shinobiAtualizado.setId(id);
+            return shinobiRepository.save(shinobiAtualizado);
+        }
+        return null;
     }
 }

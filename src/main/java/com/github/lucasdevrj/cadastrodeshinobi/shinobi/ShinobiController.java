@@ -41,8 +41,8 @@ public class ShinobiController {
 
     //Atualizar Shinobi
     @PutMapping("/atualizar/{id}") //atualizar informação passada pelo método
-    public ShinobiModel atualizarShinobi(@PathVariable Long id, @RequestBody ShinobiModel shinobi) {
-        return shinobiService.atualizar(id, shinobi);
+    public ShinobiModel atualizarShinobi(@PathVariable Long id, @RequestBody ShinobiModel shinobiAtualizado) {
+        return shinobiService.atualizar(id, shinobiAtualizado);
     }
 
     //@PathVariable pega o valor digitado pelo usuário
