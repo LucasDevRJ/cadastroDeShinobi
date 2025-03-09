@@ -18,12 +18,17 @@ public class ShinobiService {
         return shinobiRepository.findAll();
     }
 
-    public ShinobiModel exibirNinjaPorID(Long id) {
+    public ShinobiModel exibirShinobiPorID(Long id) {
         Optional<ShinobiModel> shinobiBuscadoPorID = shinobiRepository.findById(id);
         return shinobiBuscadoPorID.orElse(null);
     }
 
     public ShinobiModel adicionarShinobi(ShinobiModel shinobi) {
         return shinobiRepository.save(shinobi);
+    }
+
+    //tem que ser uma função void, pois não será necessário mandar nada ao servidor
+    public void deletarShinobiPorID(Long id) {
+        shinobiRepository.deleteById(id);
     }
 }
