@@ -27,9 +27,9 @@ public class MissaoController {
     }
 
     //GET - Enviar requisição para exibir Missão por ID
-    @GetMapping("/exibirPorID")
-    public String exibirMissaoPorID() {
-        return "Missão exibida com sucesso!";
+    @GetMapping("/exibirPorID/{id}")
+    public MissaoModel exibirMissaoPorID(@PathVariable Long id) {
+        return missaoService.buscarPorId(id);
     }
 
     //PUT - Enviar requisição para atualizar Missão por ID
