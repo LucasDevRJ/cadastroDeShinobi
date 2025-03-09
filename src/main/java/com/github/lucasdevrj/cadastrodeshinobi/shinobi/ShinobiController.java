@@ -30,7 +30,7 @@ public class ShinobiController {
     //Procurar Shinobi por ID
     @GetMapping("/exibirPorID/{id}") //ID será passada pelo usuário
     public ShinobiModel exibirShinobiPorID(@PathVariable Long id) {
-        return shinobiService.exibirNinjaPorID(id);
+        return shinobiService.exibirShinobiPorID(id);
     }
 
     //Exibir todos os Shinobis
@@ -45,9 +45,10 @@ public class ShinobiController {
         return "Atualizado com sucesso!";
     }
 
+    //@PathVariable pega o valor digitado pelo usuário
     //Deleter Shinobi
-    @DeleteMapping("/deletar") //deletar informação passada pelo método
-    public String deletarShinobiPorID() {
-        return "Shinobi deletado com sucesso!";
+    @DeleteMapping("/deletar/{id}") //deletar informação passada pelo método
+    public void deletarShinobiPorID(@PathVariable Long id) {
+       shinobiService.deletarShinobiPorID(id);
     }
 }
