@@ -1,8 +1,6 @@
 package com.github.lucasdevrj.cadastrodeshinobi.missao;
 
-import com.github.lucasdevrj.cadastrodeshinobi.shinobi.ShinobiModel;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController //indica para a classe que ela é uma Controladora para a API

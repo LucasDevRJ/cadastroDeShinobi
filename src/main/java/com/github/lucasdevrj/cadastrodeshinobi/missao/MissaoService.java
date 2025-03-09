@@ -1,9 +1,6 @@
 package com.github.lucasdevrj.cadastrodeshinobi.missao;
 
-import com.github.lucasdevrj.cadastrodeshinobi.shinobi.ShinobiModel;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
-
 import java.util.List;
 import java.util.Optional;
 
