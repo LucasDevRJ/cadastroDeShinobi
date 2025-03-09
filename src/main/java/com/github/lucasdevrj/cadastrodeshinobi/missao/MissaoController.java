@@ -36,9 +36,9 @@ public class MissaoController {
     }
 
     //PUT - Enviar requisição para atualizar Missão por ID
-    @PutMapping("/atualizar")
-    public String atualizarMissao() {
-        return "Missão atualizada com sucesso!";
+    @PutMapping("/atualizar/{id}")
+    public MissaoModel atualizarMissao(@PathVariable Long id, @RequestBody MissaoModel missao) {
+        return missaoService.atualizar(id, missao);
     }
 
     //DELETE - Enviar requisição para excluir Missão por ID

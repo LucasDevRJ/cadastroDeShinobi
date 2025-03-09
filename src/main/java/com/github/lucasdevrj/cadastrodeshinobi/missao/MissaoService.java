@@ -27,6 +27,17 @@ public class MissaoService {
         return missao.orElse(null);
     }
 
+    //Lógica para função de atualizar Missão
+    public MissaoModel atualizar(Long id, MissaoModel missaoASerAtualizada) {
+        MissaoModel missaoAtualizada = buscarPorId(id);
+
+        missaoAtualizada.setNome(missaoASerAtualizada.getNome());
+        missaoAtualizada.setDescricao(missaoASerAtualizada.getDescricao());
+        missaoAtualizada.setRank(missaoASerAtualizada.getRank());
+
+        return missaoRepository.save(missaoAtualizada);
+    }
+
     //função para adicionar Missão
     public MissaoModel adicionar(MissaoModel missao) {
         return missaoRepository.save(missao);
