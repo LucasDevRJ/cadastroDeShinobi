@@ -1,11 +1,12 @@
 package com.github.lucasdevrj.cadastrodeshinobi.missao;
 
+import com.github.lucasdevrj.cadastrodeshinobi.shinobi.ShinobiModel;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController //indica para a classe que ela é uma Controladora para a API
-@RequestMapping("missoes")//rota da qual acessaremos a API
+@RequestMapping("/missoes")//rota da qual acessaremos a API
 public class MissaoController {
 
     private MissaoService missaoService;
@@ -14,10 +15,12 @@ public class MissaoController {
         this.missaoService = missaoService;
     }
 
-    //POST - Enviar requisição para criar uma Missão
-    @PostMapping("/adicionar")
-    public String adicionarMissao() {
-        return "Missão criada com sucesso!";
+    //Adicionar Shinobi
+    @PostMapping("/adicionar") //enviar informação passada pelo método
+    //RequestBody envia requisições pelo corpo do conteúdo
+    //Desearalização(Da web para o Banco de Dados)
+    public MissaoModel adicionarMissao(@RequestBody MissaoModel missao) {
+        return missaoService.adicionar(missao);
     }
 
     //GET - Enviar requisição para listar Missões
