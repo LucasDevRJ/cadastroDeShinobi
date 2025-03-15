@@ -29,19 +29,19 @@ public class ShinobiController {
 
     //Procurar Shinobi por ID
     @GetMapping("/exibirPorID/{id}") //ID será passada pelo usuário
-    public ShinobiModel exibirShinobiPorID(@PathVariable Long id) {
+    public ShinobiDTO exibirShinobiPorID(@PathVariable Long id) {
         return shinobiService.exibirShinobiPorID(id);
     }
 
     //Exibir todos os Shinobis
     @GetMapping("/listar")
-    public List<ShinobiModel> listarShinobis() {
+    public List<ShinobiDTO> listarShinobis() {
         return shinobiService.listarShinobis();
     }
 
     //Atualizar Shinobi
     @PutMapping("/atualizar/{id}") //atualizar informação passada pelo método
-    public ShinobiModel atualizarShinobi(@PathVariable Long id, @RequestBody ShinobiModel shinobiAtualizado) {
+    public ShinobiDTO atualizarShinobi(@PathVariable Long id, @RequestBody ShinobiDTO shinobiAtualizado) {
         return shinobiService.atualizar(id, shinobiAtualizado);
     }
 
