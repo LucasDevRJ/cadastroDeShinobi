@@ -9,8 +9,8 @@ import java.util.stream.Collectors;
 @Service
 public class ShinobiService {
 
-    private ShinobiRepository shinobiRepository;
-    private ShinobiMapper shinobiMapper;
+    private final ShinobiRepository shinobiRepository;
+    private final ShinobiMapper shinobiMapper;
 
     public ShinobiService(ShinobiRepository shinobiRepository, ShinobiMapper shinobiMapper) {
         this.shinobiRepository = shinobiRepository;

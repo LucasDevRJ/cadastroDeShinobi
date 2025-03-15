@@ -10,7 +10,7 @@ import java.util.List;
 @RequestMapping("/shinobis") //rota da qual acessaremos a API
 public class ShinobiController {
 
-    private ShinobiService shinobiService;
+    private final ShinobiService shinobiService;
 
     public ShinobiController(ShinobiService shinobiService) {
         this.shinobiService = shinobiService;
