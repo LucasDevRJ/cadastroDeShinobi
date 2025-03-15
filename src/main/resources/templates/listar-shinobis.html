@@ -16,6 +16,10 @@
             <p class="lead">Gerencie seus dados de forma simples e eficaz.</p>
         </header>
 
+        <div class="d-flex justify-content-end m-5">
+            <a href="#" class="btn btn-success btn-lg">Cadastrar</a>
+        </div>
+
         <div class="container mt-5 d-flex table-responsive">
             <table class="table table-striped table-bordered table-hover table-sm text-center align-middle">
                 <thead class="table-dark">
@@ -48,9 +52,14 @@
                         <td th:text="${shinobi.getId()}"></td>
                         <td th:text="${shinobi.getNome()}"></td>
                         <td th:text="${shinobi.getEmail()}"></td>
+
                         <td>
-                            <img class="img-fluid w-50" style="height: 20vh;" th:src="${shinobi.getImagemUrl()}" alt="">
+                            <span th:if="${!shinobi.getImagemUrl().isEmpty()}">
+                                <img style="height: 30vh; width: 15vw" th:src="${shinobi.getImagemUrl()}" alt="Foto do Shinobi">
+                                <span th:if="${shinobi.getImagemUrl().isEmpty()}">Sem Foto</span>
+                            </span>
                         </td>
+
                         <td th:text="${shinobi.getIdade()}"></td>
                         <td th:text="${shinobi.getRank()}"></td>
                         <td>
