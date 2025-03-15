@@ -4,7 +4,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.swing.text.html.Option;
 import java.util.List;
 
 @RestController //indica para a classe que ela é uma Controladora para a API
@@ -33,15 +32,22 @@ public class ShinobiController {
     }
 
     //Procurar Shinobi por ID
+    //? significa que é Generic, ou seja, pode usar vários tipos de classes distintas
     @GetMapping("/exibirPorID/{id}") //ID será passada pelo usuário
-    public ShinobiDTO exibirShinobiPorID(@PathVariable Long id) {
-        return shinobiService.exibirShinobiPorID(id);
+    public ResponseEntity<?> exibirShinobiPorID(@PathVariable Long id) {
+        ShinobiDTO shinobi = shinobiService.exibirShinobiPorID(id);
+        if (shinobi != null) {
+            return ResponseEntity.status(HttpStatus.OK).body(shinobi);
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Shinobi com ID " + id + " é inexistente.");
+        }
     }
 
     //Exibir todos os Shinobis
     @GetMapping("/listar")
-    public List<ShinobiDTO> listarShinobis() {
-        return shinobiService.listarShinobis();
+    public ResponseEntity<List<ShinobiDTO>> listarShinobis() {
+        List<ShinobiDTO> shinobis = shinobiService.listarShinobis();
+        return ResponseEntity.ok(shinobis);
     }
 
     //Atualizar Shinobi
@@ -50,8 +56,9 @@ public class ShinobiController {
         if (shinobiService.exibirShinobiPorID(id) != null) {
             shinobiService.atualizar(id, shinobiAtualizado);
             return ResponseEntity.ok("O Shinobi " + shinobiAtualizado.getNome() + " atualizado com sucesso!");
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Shinobi com ID " + id + " é inexistente.");
         }
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Shinobi inexistente!");
     }
 
     //@PathVariable pega o valor digitado pelo usuário
@@ -63,7 +70,7 @@ public class ShinobiController {
             shinobiService.deletarShinobiPorID(id);
             return ResponseEntity.ok("O Shinobi " + shinobiDeletado.getNome() + " foi deletado com sucesso!");
         } else {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Shinobi inexistente!");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Shinobi com ID " + id + " é inexistente.");
         }
     }
 }
