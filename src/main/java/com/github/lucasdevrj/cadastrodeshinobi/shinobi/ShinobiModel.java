@@ -12,7 +12,7 @@ import lombok.ToString;
 @NoArgsConstructor //construtor sem atributos
 @AllArgsConstructor //construtor com todos os atributos
 @Data //Getters e Setters dos atributos
-@ToString(exclude = "missoes") //adiciona o toString que modifica o valor referência do Objeto. Exclude interrompe o loop de execução
+@ToString(exclude = "missao") //adiciona o toString que modifica o valor referência do Objeto. Exclude interrompe o loop de execução
 public class ShinobiModel {
 
     @Id //para gerar ID's na entidade

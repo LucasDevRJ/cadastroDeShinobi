@@ -7,6 +7,35 @@
         <title>Listagem de Shinobis</title>
     </head>
     <body>
+        <h1>Lista de Shinobis</h1>
 
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>E-mail</th>
+                    <th>Imagem</th>
+                    <th>Idade</th>
+                    <th>Rank</th>
+                    <th>Missão</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="shinobi: ${shinobis}">
+                    <td th:text="${shinobi.getId()}"></td>
+                    <td th:text="${shinobi.getNome()}"></td>
+                    <td th:text="${shinobi.getEmail()}"></td>
+                    <!--
+                    <td>
+                        <img th:src="${shinobi.getImagemUrl()}" alt="">
+                    </td>
+                    -->
+                    <td th:text="${shinobi.getIdade()}"></td>
+                    <td th:text="${shinobi.getRank()}"></td>
+                    <td th:text="${shinobi.missao}"></td>
+                </tr>
+            </tbody>
+        </table>
     </body>
 </html>
