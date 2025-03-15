@@ -23,8 +23,8 @@ public class ShinobiController {
     @PostMapping("/adicionar") //enviar informação passada pelo método
     //RequestBody envia requisições pelo corpo do conteúdo
     //Desearalização(Da web para o Banco de Dados)
-    public ShinobiModel adicionarShinobi(@RequestBody ShinobiModel shinobi) {
-        return shinobiService.adicionarShinobi(shinobi);
+    public ShinobiDTO adicionarShinobi(@RequestBody ShinobiDTO shinobiDTO) {
+        return shinobiService.adicionarShinobi(shinobiDTO);
     }
 
     //Procurar Shinobi por ID

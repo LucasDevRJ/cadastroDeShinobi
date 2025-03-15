@@ -9,9 +9,11 @@ import java.util.Optional;
 public class ShinobiService {
 
     private ShinobiRepository shinobiRepository;
+    private ShinobiMapper shinobiMapper;
 
-    public ShinobiService(ShinobiRepository shinobiRepository) {
+    public ShinobiService(ShinobiRepository shinobiRepository, ShinobiMapper shinobiMapper) {
         this.shinobiRepository = shinobiRepository;
+        this.shinobiMapper = shinobiMapper;
     }
 
     public List<ShinobiModel> listarShinobis() {
@@ -23,8 +25,10 @@ public class ShinobiService {
         return shinobiBuscadoPorID.orElse(null);
     }
 
-    public ShinobiModel adicionarShinobi(ShinobiModel shinobi) {
-        return shinobiRepository.save(shinobi);
+    public ShinobiDTO adicionarShinobi(ShinobiDTO shinobiDTO) {
+        ShinobiModel shinobi =  shinobiMapper.map(shinobiDTO);
+        shinobi = shinobiRepository.save(shinobi);
+        return shinobiMapper.map(shinobi);
     }
 
     //tem que ser uma função void, pois não será necessário mandar nada ao servidor
