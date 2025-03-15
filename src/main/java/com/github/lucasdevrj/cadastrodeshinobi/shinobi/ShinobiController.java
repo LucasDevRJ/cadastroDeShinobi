@@ -23,25 +23,25 @@ public class ShinobiController {
     @PostMapping("/adicionar") //enviar informação passada pelo método
     //RequestBody envia requisições pelo corpo do conteúdo
     //Desearalização(Da web para o Banco de Dados)
-    public ShinobiModel adicionarShinobi(@RequestBody ShinobiModel shinobi) {
-        return shinobiService.adicionarShinobi(shinobi);
+    public ShinobiDTO adicionarShinobi(@RequestBody ShinobiDTO shinobiDTO) {
+        return shinobiService.adicionarShinobi(shinobiDTO);
     }
 
     //Procurar Shinobi por ID
     @GetMapping("/exibirPorID/{id}") //ID será passada pelo usuário
-    public ShinobiModel exibirShinobiPorID(@PathVariable Long id) {
+    public ShinobiDTO exibirShinobiPorID(@PathVariable Long id) {
         return shinobiService.exibirShinobiPorID(id);
     }
 
     //Exibir todos os Shinobis
     @GetMapping("/listar")
-    public List<ShinobiModel> listarShinobis() {
+    public List<ShinobiDTO> listarShinobis() {
         return shinobiService.listarShinobis();
     }
 
     //Atualizar Shinobi
     @PutMapping("/atualizar/{id}") //atualizar informação passada pelo método
-    public ShinobiModel atualizarShinobi(@PathVariable Long id, @RequestBody ShinobiModel shinobiAtualizado) {
+    public ShinobiDTO atualizarShinobi(@PathVariable Long id, @RequestBody ShinobiDTO shinobiAtualizado) {
         return shinobiService.atualizar(id, shinobiAtualizado);
     }
 

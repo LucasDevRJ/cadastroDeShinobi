@@ -30,6 +30,9 @@ public class ShinobiModel {
     @Column(name = "idade")
     private int idade;
 
+    @Column(name = "rank")
+    private String rank;
+
     @ManyToOne //muitos ninjas podem fazer uma missão
     @JoinColumn(name = "missoes_id") //chave estrangeira
     private MissaoModel missao;
