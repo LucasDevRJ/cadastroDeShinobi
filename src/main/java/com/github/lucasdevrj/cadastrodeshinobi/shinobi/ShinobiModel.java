@@ -5,12 +5,14 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Entity //transforma um classe em uma entidade no Banco de Dados
 @Table(name = "tb_shinobis") //Criar a tabela com o nome definido
 @NoArgsConstructor //construtor sem atributos
 @AllArgsConstructor //construtor com todos os atributos
 @Data //Getters e Setters dos atributos
+@ToString(exclude = "missoes") //adiciona o toString que modifica o valor referência do Objeto. Exclude interrompe o loop de execução
 public class ShinobiModel {
 
     @Id //para gerar ID's na entidade
