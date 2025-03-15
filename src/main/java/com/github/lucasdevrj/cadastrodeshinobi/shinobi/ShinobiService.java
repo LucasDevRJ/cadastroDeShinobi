@@ -45,6 +45,7 @@ public class ShinobiService {
         shinobiRepository.deleteById(id);
     }
 
+    //Transferindo a responsabilidade de atualizar o Shinobi para o DTO
     public ShinobiDTO atualizar(Long id, ShinobiDTO shinobiDTO) {
         Optional<ShinobiModel> shinobiExistente = shinobiRepository.findById(id);
         if (shinobiExistente.isPresent()) {
