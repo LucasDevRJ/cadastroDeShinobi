@@ -1,6 +1,5 @@
 package com.github.lucasdevrj.cadastrodeshinobi.shinobi;
 
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -33,8 +32,23 @@ public class ShinobiControllerUi {
 
     // Salvar o produto
     @PostMapping("/salvar")
-    public String salvarProduto(@ModelAttribute ShinobiDTO shinobiDTO) {
+    public String salvarShinobi(@ModelAttribute ShinobiDTO shinobiDTO) {
         shinobiService.adicionarShinobi(shinobiDTO);
         return "redirect:/listar"; // Redireciona para a lista após salvar
+    }
+
+    // Método GET para carregar a página de edição com o Ninja
+    @GetMapping("/atualizar/{id}")
+    public String redirecionaPaginaAtualizacaoShinobi(@PathVariable("id") Long id, Model model) {
+        ShinobiDTO shinobi = shinobiService.exibirShinobiPorID(id);
+        model.addAttribute("shinobi", shinobi);  // Passa o Ninja para a página de edição
+        return "atualizar-shinobi.html";  // Nome da página de edição (HTML/Thymeleaf)
+    }
+
+    // Método POST para atualizar o Ninja
+    @PostMapping("/atualizar/{id}")
+    public String atualizarShinobi(@PathVariable("id") Long id, @ModelAttribute ShinobiDTO shinobi) {
+        shinobiService.atualizar(id, shinobi);
+        return "redirect:/ninjas";  // Redireciona para a página de listagem de ninjas
     }
 }

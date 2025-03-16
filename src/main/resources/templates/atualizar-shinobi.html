@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro de Produto</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+
+<header class="text-center text-white" style="background-image: url('https://wallpapers.com/images/featured/4k-ultra-hd-naruto-39q8wlqnrq4vfpo5.jpg'); background-size: cover; padding: 100px 0;">
+    <h1 class="display-4">Listagem de Shinobis</h1>
+    <p class="lead">Gerencie seus dados de forma simples e eficaz.</p>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light p-1 container-fluid w-25">
+        <div class="container">
+            <!-- Botão de menu para dispositivos móveis -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Itens do menu -->
+            <div class="collapse navbar-collapse d-flex justify-content-center" id="navbarNav">
+                <ul class="navbar-nav d-flex align-items-center justify-content-center">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" th:href="@{/shinobis/ui/listar}">Listagem</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/shinobis/ui/adiciona}">Cadastro</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/shinobis/ui/missoes}">Missões</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="container mt-5">
+    <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white">
+            <h4 class="mb-0">Adicionar Shinobi</h4>
+        </div>
+        <div class="card-body">
+            <form th:action="@{/shinobis/ui/atualizar/{id}(id=${shinobi.id})}" th:object="${shinobi}" method="post">
+                <div class="mb-3">
+                    <label for="nome" class="form-label">Nome:</label>
+                    <input type="text" id="nome" class="form-control" th:field="*{nome}" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="email" class="form-label">E-mail:</label>
+                    <input type="text" id="email" class="form-control" th:field="*{email}" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="imagem" class="form-label">Imagem:</label>
+                    <input type="text" id="imagem" class="form-control" th:field="*{imagemUrl}" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="idade" class="form-label">Idade:</label>
+                    <input type="text" id="idade" class="form-control" th:field="*{idade}" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="missao" class="form-label">Categoria</label>
+                    <select id="missao" class="form-select" th:field="*{missao.id}">
+                        <option value="" disabled selected>Selecione uma missão</option>
+                        <option th:each="cat : ${missao}"
+                                th:value="${missao.id}"
+                                th:text="${missao.nome}">
+                        </option>
+                    </select>
+                </div>
+
+                <div class="d-flex justify-content-end">
+                    <button type="submit" class="btn btn-success">Adicionar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JS opcional -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+<footer class="bg-dark text-white text-center p-4">
+    <p>&copy; Desenvolvido por LucasDevRJ</p>
+    <a href="https://github.com/LucasDevRJ" target="_blank">
+        <i class="fab fa-github"></i> GitHub
+    </a>
+</footer>
+</html>
