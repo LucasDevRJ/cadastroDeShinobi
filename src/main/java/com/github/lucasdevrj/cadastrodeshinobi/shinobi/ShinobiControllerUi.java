@@ -3,8 +3,7 @@ package com.github.lucasdevrj.cadastrodeshinobi.shinobi;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -23,5 +22,19 @@ public class ShinobiControllerUi {
         List<ShinobiDTO> shinobis = shinobiService.listarShinobis();
         model.addAttribute("shinobis", shinobis);
         return "listar-shinobis.html";
+    }
+
+    // Exibir o formulário de cadastro
+    @GetMapping("/adiciona")
+    public String exibirFormulario(Model model) {
+        model.addAttribute("shinobi", new ShinobiDTO()); // Cria um objeto vazio para o formulário
+        return "adiciona-shinobi.html"; // Nome do arquivo HTML
+    }
+
+    // Salvar o produto
+    @PostMapping("/salvar")
+    public String salvarProduto(@ModelAttribute ShinobiDTO shinobiDTO) {
+        shinobiService.adicionarShinobi(shinobiDTO);
+        return "redirect:/listar"; // Redireciona para a lista após salvar
     }
 }
