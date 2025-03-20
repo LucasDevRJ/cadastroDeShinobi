@@ -2,6 +2,9 @@ package com.github.lucasdevrj.cadastrodeshinobi.shinobi;
 
 import com.github.lucasdevrj.cadastrodeshinobi.missao.MissaoModel;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -21,15 +24,18 @@ public class ShinobiModel {
     private Long id;
 
     @Column(name = "nome")
+    @NotBlank
     private String nome;
 
     @Column(unique = true) //valor não poderá ser replicado
+    @Email
     private String email;
 
     @Column(name = "imagem_url")
     private String imagemUrl;
 
     @Column(name = "idade")
+    @Min(1)
     private int idade;
 
     @Column(name = "rank")

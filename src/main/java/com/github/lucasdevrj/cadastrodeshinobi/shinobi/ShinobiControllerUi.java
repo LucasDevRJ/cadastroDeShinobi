@@ -20,7 +20,7 @@ public class ShinobiControllerUi {
     public String listarShinobis(Model model) { //biblioteca com interfaces gráficas
         List<ShinobiDTO> shinobis = shinobiService.listarShinobis();
         model.addAttribute("shinobis", shinobis);
-        return "listar-shinobis.html";
+        return "index.html";
     }
 
     // Exibir o formulário de cadastro

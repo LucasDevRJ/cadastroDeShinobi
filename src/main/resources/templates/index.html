@@ -62,7 +62,7 @@
                 <tbody>
                     <tr th:each="shinobi: ${shinobis}">
                         <td>
-                            <div class="d-flex">
+                            <div class="d-flex gap-2">
                                 <a th:href="@{/shinobis/ui/atualizar/{id}(id=${shinobi.id})}" class="btn btn-warning">
                                     <i class="fas fa-edit"></i>
                                 </a>
@@ -90,9 +90,10 @@
                             <span th:if="${shinobi.missao}">
                                 <span th:text="${shinobi.missao.nome}"></span>
                                 <span th:if="${shinobi.missao == null}">Sem missões</span>
+                                <br>
+                                <span class="small text-muted" th:text="${shinobi.missao.descricao}"></span>
                             </span>
                         </td>
-
                     </tr>
                 </tbody>
 
