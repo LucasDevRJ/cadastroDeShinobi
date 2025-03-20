@@ -1,5 +1,8 @@
 package com.github.lucasdevrj.cadastrodeshinobi.missao;
 
+import com.github.lucasdevrj.cadastrodeshinobi.shinobi.ShinobiDTO;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
@@ -13,18 +16,20 @@ public class MissaoController {
         this.missaoService = missaoService;
     }
 
-    //Adicionar Shinobi
-    @PostMapping("/adicionar") //enviar informação passada pelo método
-    //RequestBody envia requisições pelo corpo do conteúdo
-    //Desearalização(Da web para o Banco de Dados)
-    public MissaoModel adicionarMissao(@RequestBody MissaoModel missao) {
-        return missaoService.adicionar(missao);
-    }
+//    //Adicionar Shinobi
+//    @PostMapping("/adicionar") //enviar informação passada pelo método
+//    //RequestBody envia requisições pelo corpo do conteúdo
+//    //Desearalização(Da web para o Banco de Dados)
+//    public MissaoModel adicionarMissao(@RequestBody MissaoModel missao) {
+//        return missaoService.adicionar(missao);
+//    }
 
     //GET - Enviar requisição para listar Missões
-    @GetMapping("/listar")
-    public List<MissaoModel> listarMissoes() {
-        return missaoService.listar();
+    @PostMapping("/adicionar")
+    public ResponseEntity<String> adicionarMissao(@RequestBody MissaoDTO missao) {
+        MissaoDTO missaoAdicionada = missaoService.adicionar(missao);
+        return ResponseEntity.status(HttpStatus.CREATED)
+                .body("Missão adicionada com sucesso: ");
     }
 
     //GET - Enviar requisição para exibir Missão por ID

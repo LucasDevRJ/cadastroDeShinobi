@@ -1,5 +1,7 @@
 package com.github.lucasdevrj.cadastrodeshinobi.shinobi;
 
+import com.github.lucasdevrj.cadastrodeshinobi.missao.MissaoDTO;
+import com.github.lucasdevrj.cadastrodeshinobi.missao.MissaoService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -11,9 +13,11 @@ import java.util.List;
 public class ShinobiControllerUi {
 
     private final ShinobiService shinobiService;
+    private final MissaoService missaoService;
 
-    public ShinobiControllerUi(ShinobiService shinobiService) {
+    public ShinobiControllerUi(ShinobiService shinobiService, MissaoService missaoService) {
         this.shinobiService = shinobiService;
+        this.missaoService = missaoService;
     }
 
     @GetMapping("/listar")
@@ -26,7 +30,10 @@ public class ShinobiControllerUi {
     // Exibir o formulário de cadastro
     @GetMapping("/adiciona")
     public String exibirFormulario(Model model) {
-        model.addAttribute("shinobi", new ShinobiDTO()); // Cria um objeto vazio para o formulário
+         // Cria um objeto vazio para o formulário
+        List<MissaoDTO> missoes = missaoService.listarMissoes();
+        model.addAttribute("missoes", missoes);
+        model.addAttribute("shinobi", new ShinobiDTO());
         return "adiciona-shinobi.html"; // Nome do arquivo HTML
     }
 
@@ -34,7 +41,7 @@ public class ShinobiControllerUi {
     @PostMapping("/salvar")
     public String salvarShinobi(@ModelAttribute ShinobiDTO shinobiDTO) {
         shinobiService.adicionarShinobi(shinobiDTO);
-        return "redirect:/listar"; // Redireciona para a lista após salvar
+        return "redirect:/shinobis/ui/listar"; // Redireciona para a lista após salvar
     }
 
     // Método GET para carregar a página de edição com o Ninja
@@ -49,6 +56,12 @@ public class ShinobiControllerUi {
     @PostMapping("/atualizar/{id}")
     public String atualizarShinobi(@PathVariable("id") Long id, @ModelAttribute ShinobiDTO shinobi) {
         shinobiService.atualizar(id, shinobi);
-        return "redirect:/ninjas";  // Redireciona para a página de listagem de ninjas
+        return "redirect:/listar";  // Redireciona para a página de listagem de ninjas
+    }
+
+    @GetMapping("/deletar/{id}")
+    public String deletarShinobi(@PathVariable Long id) {
+        shinobiService.deletarShinobiPorID(id);
+        return "redirect:/shinobis/ui/listar"; // redireciona para a listagem após deletar
     }
 }
