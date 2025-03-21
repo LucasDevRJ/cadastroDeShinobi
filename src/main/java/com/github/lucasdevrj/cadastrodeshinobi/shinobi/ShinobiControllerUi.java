@@ -49,7 +49,7 @@ public class ShinobiControllerUi {
     public String redirecionaPaginaAtualizacaoShinobi(@PathVariable("id") Long id, Model model) {
         ShinobiDTO shinobi = shinobiService.exibirShinobiPorID(id);
         model.addAttribute("shinobi", shinobi);  // Passa o Ninja para a página de edição
-        return "atualizar-shinobi.html";  // Nome da página de edição (HTML/Thymeleaf)
+        return "atualiza-shinobi.html";  // Nome da página de edição (HTML/Thymeleaf)
     }
 
     // Método POST para atualizar o Ninja
