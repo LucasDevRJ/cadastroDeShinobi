@@ -15,7 +15,6 @@ public class MissaoControllerUi {
     private final MissaoService missaoService;
     private final ShinobiService shinobiService;
 
-
     public MissaoControllerUi(MissaoService missaoService, ShinobiService shinobiService) {
         this.missaoService = missaoService;
         this.shinobiService = shinobiService;
@@ -36,11 +35,28 @@ public class MissaoControllerUi {
 
     // Exibir o formulário de cadastro
     @GetMapping("/formularioCadastro")
-    public String exibirFormulario(Model model) {
+    public String redirecionaPaginaAdicionaMissao(Model model) {
         // Cria um objeto vazio para o formulário
         List<ShinobiDTO> shinobis = shinobiService.listarShinobis();
         model.addAttribute("shinobis", shinobis);
         model.addAttribute("missao", new MissaoDTO());
-        return "adiciona-missao.html"; // Nome do arquivo HTML
+        return "formulario-missao.html"; // Nome do arquivo HTML
+    }
+
+    // Método GET para carregar a página de edição com o Ninja
+    @GetMapping("/atualizar/{id}")
+    public String redirecionaPaginaAtualizacaoMissao(@PathVariable("id") Long id, Model model) {
+        List<ShinobiDTO> shinobis = shinobiService.listarShinobis();
+        model.addAttribute("shinobis", shinobis);
+        MissaoDTO missao = missaoService.exibirMissaoPorID(id);
+        model.addAttribute("missao", missao);  // Passa o Ninja para a página de edição
+        return "formulario-missao.html";  // Nome da página de edição (HTML/Thymeleaf)
+    }
+
+    // Método POST para atualizar o Ninja
+    @PostMapping("/atualizar/{id}")
+    public String atualizarMissao(@PathVariable("id") Long id, @ModelAttribute MissaoDTO missao) {
+        missaoService.atualizar(id, missao);
+        return "redirect:/missoes/ui/listar";  // Redireciona para a página de listagem de ninjas
     }
 }

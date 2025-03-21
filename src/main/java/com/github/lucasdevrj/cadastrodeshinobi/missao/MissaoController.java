@@ -34,13 +34,13 @@ public class MissaoController {
 
     //GET - Enviar requisição para exibir Missão por ID
     @GetMapping("/exibirPorID/{id}")
-    public MissaoModel exibirMissaoPorID(@PathVariable Long id) {
-        return missaoService.buscarPorId(id);
+    public MissaoDTO exibirMissaoPorID(@PathVariable Long id) {
+        return missaoService.exibirMissaoPorID(id);
     }
 
     //PUT - Enviar requisição para atualizar Missão por ID
     @PutMapping("/atualizar/{id}")
-    public MissaoModel atualizarMissao(@PathVariable Long id, @RequestBody MissaoModel missaoAtualizada) {
+    public MissaoDTO atualizarMissao(@PathVariable Long id, @RequestBody MissaoDTO missaoAtualizada) {
         return missaoService.atualizar(id, missaoAtualizada);
     }
 

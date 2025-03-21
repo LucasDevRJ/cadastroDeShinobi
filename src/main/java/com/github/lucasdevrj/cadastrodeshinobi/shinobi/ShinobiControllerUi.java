@@ -34,7 +34,7 @@ public class ShinobiControllerUi {
         List<MissaoDTO> missoes = missaoService.listarMissoes();
         model.addAttribute("missoes", missoes);
         model.addAttribute("shinobi", new ShinobiDTO());
-        return "adiciona-shinobi.html"; // Nome do arquivo HTML
+        return "formulario-shinobi.html"; // Nome do arquivo HTML
     }
 
     // Salvar o produto
@@ -47,9 +47,11 @@ public class ShinobiControllerUi {
     // Método GET para carregar a página de edição com o Ninja
     @GetMapping("/atualizar/{id}")
     public String redirecionaPaginaAtualizacaoShinobi(@PathVariable("id") Long id, Model model) {
+        List<MissaoDTO> missoes = missaoService.listarMissoes();
+        model.addAttribute("missoes", missoes);
         ShinobiDTO shinobi = shinobiService.exibirShinobiPorID(id);
         model.addAttribute("shinobi", shinobi);  // Passa o Ninja para a página de edição
-        return "atualiza-shinobi.html";  // Nome da página de edição (HTML/Thymeleaf)
+        return "formulario-shinobi.html";  // Nome da página de edição (HTML/Thymeleaf)
     }
 
     // Método POST para atualizar o Ninja

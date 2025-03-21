@@ -27,16 +27,20 @@ public class MissaoService {
     }
 
     //Lógica para procurar e pegar a missão deseja por id
-    public MissaoModel buscarPorId(Long id) {
-        Optional<MissaoModel> missao = missaoRepository.findById(id);
-        return missao.orElse(null);
+    public MissaoDTO exibirMissaoPorID(Long id) {
+        Optional<MissaoModel> missaoBuscadaPorId = missaoRepository.findById(id);
+        return missaoBuscadaPorId.map(missaoMapper::map).orElse(null);
     }
 
     //Lógica para função de atualizar Missão
-    public MissaoModel atualizar(Long id, MissaoModel missaoAtualizada) {
-        if (missaoRepository.existsById(id)) {
+    //Transferindo a responsabilidade de atualizar o Shinobi para o DTO
+    public MissaoDTO atualizar(Long id, MissaoDTO missaoDTO) {
+        Optional<MissaoModel> missaoExistente = missaoRepository.findById(id);
+        if (missaoExistente.isPresent()) {
+            MissaoModel missaoAtualizada = missaoMapper.map(missaoDTO);
             missaoAtualizada.setId(id);
-            return missaoRepository.save(missaoAtualizada);
+            MissaoModel missaoSalva = missaoRepository.save(missaoAtualizada);
+            return missaoMapper.map(missaoSalva);
         }
         return null;
     }
