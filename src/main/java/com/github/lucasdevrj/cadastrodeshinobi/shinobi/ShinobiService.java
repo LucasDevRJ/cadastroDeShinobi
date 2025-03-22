@@ -1,5 +1,9 @@
 package com.github.lucasdevrj.cadastrodeshinobi.shinobi;
 
+import com.github.lucasdevrj.cadastrodeshinobi.missao.MissaoDTO;
+import com.github.lucasdevrj.cadastrodeshinobi.missao.MissaoMapper;
+import com.github.lucasdevrj.cadastrodeshinobi.missao.MissaoModel;
+import com.github.lucasdevrj.cadastrodeshinobi.missao.MissaoRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -9,12 +13,16 @@ import java.util.stream.Collectors;
 @Service
 public class ShinobiService {
 
-    private ShinobiRepository shinobiRepository;
-    private ShinobiMapper shinobiMapper;
+    private final ShinobiRepository shinobiRepository;
+    private final ShinobiMapper shinobiMapper;
+    private final MissaoRepository missaoRepository;
+    private final MissaoMapper missaoMapper;
 
-    public ShinobiService(ShinobiRepository shinobiRepository, ShinobiMapper shinobiMapper) {
+    public ShinobiService(ShinobiRepository shinobiRepository, ShinobiMapper shinobiMapper, MissaoRepository missaoRepository, MissaoMapper missaoMapper) {
         this.shinobiRepository = shinobiRepository;
         this.shinobiMapper = shinobiMapper;
+        this.missaoRepository = missaoRepository;
+        this.missaoMapper = missaoMapper;
     }
 
     //Convertendo de Model para DTO

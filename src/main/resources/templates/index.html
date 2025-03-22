@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="pt-br">
+    <body>
+        <head th:replace="fragments :: head-padrao('Shinobis')"></head>
+
+        <header th:replace="fragments :: header-padrao"></header>
+
+        <div class="d-flex justify-content-end m-5">
+            <a th:href="@{/shinobis/ui/exibirFormularioAdicaoShinobi}" class="btn btn-success btn-lg">Adicionar</a>
+        </div>
+
+        <div class="container mt-5 d-flex table-responsive">
+            <table class="table table-striped table-bordered table-hover table-sm text-center align-middle">
+                <thead class="table-dark">
+                <tr>
+                    <th>Ações</th>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>E-mail</th>
+                    <th>Imagem</th>
+                    <th>Idade</th>
+                    <th>Rank</th>
+                    <th>Missão</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                    <tr th:each="shinobi: ${shinobis}">
+                        <td>
+                            <div class="d-flex gap-2">
+                                <a th:href="@{/shinobis/ui/exibirFormularioAtualizacaoShinobi/{id}(id=${shinobi.id})}" class="btn btn-warning">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+                                <a th:href="@{/shinobis/ui/deletar/{id}(id=${shinobi.id})}" class="btn btn-danger">
+                                    <i class="bi bi-trash fas fa-trash-alt"></i>
+                                </a>
+                            </div>
+                        </td>
+
+                        <td th:text="${shinobi.getId()}"></td>
+                        <td th:text="${shinobi.getNome()}"></td>
+                        <td th:text="${shinobi.getEmail()}"></td>
+
+                        <td>
+                            <span th:if="${!shinobi.getImagemUrl().isEmpty()}">
+                                <img style="height: 30vh; width: 15vw" th:src="${shinobi.getImagemUrl()}" alt="Foto do Shinobi">
+                                <span th:if="${shinobi.getImagemUrl().isEmpty()}">Sem Foto</span>
+                            </span>
+                        </td>
+
+                        <td th:text="${shinobi.getIdade()}"></td>
+                        <td th:text="${shinobi.getRank()}"></td>
+                        <td>
+                            <span th:if="${shinobi.missao}">
+                                <span th:text="${shinobi.missao.nome}"></span>
+                                <span th:if="${shinobi.missao == null}">Sem missões</span>
+                                <br>
+                                <span class="small text-muted" th:text="${shinobi.missao.descricao}"></span>
+                            </span>
+                        </td>
+                    </tr>
+                </tbody>
+
+                <tfoot>
+                    <tr>
+                        <td colspan="8" class="text-center table-dark" >Rodapé da Tabela</td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </body>
+
+    <footer th:replace="fragments :: footer-padrao"></footer>
+</html>
