@@ -35,10 +35,11 @@ public class ShinobiModel {
     private String imagemUrl;
 
     @Column(name = "idade")
-    @Min(1)
+    @Min(8)
     private int idade;
 
     @Column(name = "rank")
+    @NotBlank
     private String rank;
 
     @ManyToOne //muitos ninjas podem fazer uma missão

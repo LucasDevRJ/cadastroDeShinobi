@@ -28,37 +28,37 @@ public class ShinobiControllerUi {
     }
 
     // Exibir o formulário de cadastro
-    @GetMapping("/adiciona")
+    @GetMapping("/exibirFormularioAdicaoShinobi")
     public String exibirFormulario(Model model) {
          // Cria um objeto vazio para o formulário
         List<MissaoDTO> missoes = missaoService.listarMissoes();
         model.addAttribute("missoes", missoes);
         model.addAttribute("shinobi", new ShinobiDTO());
-        return "formulario-shinobi.html"; // Nome do arquivo HTML
+        return "adiciona-shinobi.html"; // Nome do arquivo HTML
     }
 
     // Salvar o produto
-    @PostMapping("/salvar")
+    @PostMapping("/adicionaShinobi")
     public String salvarShinobi(@ModelAttribute ShinobiDTO shinobiDTO) {
         shinobiService.adicionarShinobi(shinobiDTO);
         return "redirect:/shinobis/ui/listar"; // Redireciona para a lista após salvar
     }
 
     // Método GET para carregar a página de edição com o Ninja
-    @GetMapping("/atualizar/{id}")
+    @GetMapping("/exibirFormularioAtualizacaoShinobi/{id}")
     public String redirecionaPaginaAtualizacaoShinobi(@PathVariable("id") Long id, Model model) {
         List<MissaoDTO> missoes = missaoService.listarMissoes();
         model.addAttribute("missoes", missoes);
         ShinobiDTO shinobi = shinobiService.exibirShinobiPorID(id);
         model.addAttribute("shinobi", shinobi);  // Passa o Ninja para a página de edição
-        return "formulario-shinobi.html";  // Nome da página de edição (HTML/Thymeleaf)
+        return "atualiza-shinobi.html";  // Nome da página de edição (HTML/Thymeleaf)
     }
 
     // Método POST para atualizar o Ninja
-    @PostMapping("/atualizar/{id}")
+    @PostMapping("/atualizaShinobi/{id}")
     public String atualizarShinobi(@PathVariable("id") Long id, @ModelAttribute ShinobiDTO shinobi) {
         shinobiService.atualizar(id, shinobi);
-        return "redirect:/listar";  // Redireciona para a página de listagem de ninjas
+        return "redirect:/shinobis/ui/listar";  // Redireciona para a página de listagem de ninjas
     }
 
     @GetMapping("/deletar/{id}")

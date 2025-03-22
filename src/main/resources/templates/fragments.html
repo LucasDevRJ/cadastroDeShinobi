@@ -10,7 +10,7 @@
 </head>
 
 <header th:fragment="header-padrao" class="text-center text-white" style="background-image: url('https://wallpapers.com/images/featured/4k-ultra-hd-naruto-39q8wlqnrq4vfpo5.jpg'); background-size: cover; padding: 100px 0;">
-    <h1 class="display-4">Listagem de Shinobis</h1>
+    <h1 class="display-4">Cadastro de Shinobis</h1>
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light p-1 container-fluid w-25">
         <div class="container">
@@ -23,10 +23,7 @@
             <div class="collapse navbar-collapse d-flex justify-content-center" id="navbarNav">
                 <ul class="navbar-nav d-flex align-items-center justify-content-center">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" th:href="@{/shinobis/ui/listar}">Listagem</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" th:href="@{/shinobis/ui/adiciona}">Cadastro</a>
+                        <a class="nav-link" aria-current="page" th:href="@{/shinobis/ui/listar}">Shinobis</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" th:href="@{/missoes/ui/listar}">Missões</a>
@@ -37,7 +34,7 @@
     </nav>
 </header>
 
-<footer th:fragment="footer-padrao" class="bg-dark text-white text-center p-4">
+<footer th:fragment="footer-padrao" class="bg-dark text-white text-center p-4 mt-5">
     <p>&copy; Desenvolvido por LucasDevRJ</p>
     <a href="https://github.com/LucasDevRJ" target="_blank">
         <i class="fab fa-github"></i> GitHub

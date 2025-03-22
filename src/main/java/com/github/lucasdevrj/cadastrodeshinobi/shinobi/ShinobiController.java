@@ -22,7 +22,7 @@ public class ShinobiController {
     }
 
     //Adicionar Shinobi
-    @PostMapping("/adicionar") //enviar informação passada pelo método
+    @PostMapping("/adicionarShinobi") //enviar informação passada pelo método
     //RequestBody envia requisições pelo corpo do conteúdo
     //Desearalização(Da web para o Banco de Dados)
     public ResponseEntity<String> adicionarShinobi(@RequestBody ShinobiDTO shinobi) {
@@ -33,7 +33,7 @@ public class ShinobiController {
 
     //Procurar Shinobi por ID
     //? significa que é Generic, ou seja, pode usar vários tipos de classes distintas
-    @GetMapping("/exibirPorID/{id}") //ID será passada pelo usuário
+    @GetMapping("/exibirShinobiPorID/{id}") //ID será passada pelo usuário
     public ResponseEntity<?> exibirShinobiPorID(@PathVariable Long id) {
         ShinobiDTO shinobi = shinobiService.exibirShinobiPorID(id);
         if (shinobi != null) {
@@ -44,14 +44,14 @@ public class ShinobiController {
     }
 
     //Exibir todos os Shinobis
-    @GetMapping("/listar")
+    @GetMapping("/listarShinobis")
     public ResponseEntity<List<ShinobiDTO>> listarShinobis() {
         List<ShinobiDTO> shinobis = shinobiService.listarShinobis();
         return ResponseEntity.ok(shinobis);
     }
 
     //Atualizar Shinobi
-    @PutMapping("/atualizar/{id}") //atualizar informação passada pelo método
+    @PutMapping("/atualizarShinobi/{id}") //atualizar informação passada pelo método
     public ResponseEntity<String> atualizarShinobi(@PathVariable Long id, @RequestBody ShinobiDTO shinobiAtualizado) {
         if (shinobiService.exibirShinobiPorID(id) != null) {
             shinobiService.atualizar(id, shinobiAtualizado);
@@ -63,7 +63,7 @@ public class ShinobiController {
 
     //@PathVariable pega o valor digitado pelo usuário
     //Deleter Shinobi
-    @DeleteMapping("/deletar/{id}") //deletar informação passada pelo método
+    @DeleteMapping("/deletarShinobi/{id}") //deletar informação passada pelo método
     public ResponseEntity<String> deletarShinobiPorID(@PathVariable Long id) {
         if (shinobiService.exibirShinobiPorID(id) != null) {
             ShinobiDTO shinobiDeletado = shinobiService.exibirShinobiPorID(id);

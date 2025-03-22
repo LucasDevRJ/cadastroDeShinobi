@@ -6,7 +6,7 @@
         <header th:replace="fragments :: header-padrao"></header>
 
         <div class="d-flex justify-content-end m-5">
-            <a th:href="@{/shinobis/ui/adiciona}" class="btn btn-success btn-lg">Cadastrar</a>
+            <a th:href="@{/shinobis/ui/exibirFormularioAdicaoShinobi}" class="btn btn-success btn-lg">Adicionar</a>
         </div>
 
         <div class="container mt-5 d-flex table-responsive">
@@ -28,7 +28,7 @@
                     <tr th:each="shinobi: ${shinobis}">
                         <td>
                             <div class="d-flex gap-2">
-                                <a th:href="@{/shinobis/ui/atualizar/{id}(id=${shinobi.id})}" class="btn btn-warning">
+                                <a th:href="@{/shinobis/ui/exibirFormularioAtualizacaoShinobi/{id}(id=${shinobi.id})}" class="btn btn-warning">
                                     <i class="fas fa-edit"></i>
                                 </a>
                                 <a th:href="@{/shinobis/ui/deletar/{id}(id=${shinobi.id})}" class="btn btn-danger">

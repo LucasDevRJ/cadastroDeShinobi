@@ -1,5 +1,6 @@
 package com.github.lucasdevrj.cadastrodeshinobi.missao;
 
+import com.github.lucasdevrj.cadastrodeshinobi.shinobi.ShinobiDTO;
 import com.github.lucasdevrj.cadastrodeshinobi.shinobi.ShinobiModel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
