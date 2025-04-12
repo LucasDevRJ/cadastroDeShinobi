@@ -65,12 +65,12 @@ public class MissaoController {
 
     //PUT - Enviar requisição para atualizar Missão por ID
     @PutMapping("/atualizarMissao/{id}")
-    @Operation(summary = "Atualiza Shinobi por ID", description = "Essa rota atualiza os dados do Shinobi pelo seu ID.") //adição da documentação do Swagger
+    @Operation(summary = "Atualiza Missão por ID", description = "Essa rota atualiza os dados da Missão pelo seu ID.") //adição da documentação do Swagger
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Shinobi atualizado com sucesso."),
-            @ApiResponse(responseCode = "404", description = "Erro ao atualizar Shinobi.")
+            @ApiResponse(responseCode = "200", description = "Missão atualizado com sucesso."),
+            @ApiResponse(responseCode = "404", description = "Erro ao atualizar Missão.")
     })
-    public ResponseEntity<String> atualizarShinobi(
+    public ResponseEntity<String> atualizarMissao(
             @Parameter(description = "Usuário encaminha o ID da Missão via requisição.") @PathVariable Long id,
             @Parameter(description = "Usuário envia os dados da Missão a ser atualizada no corpo da requisição.") @RequestBody MissaoDTO missaoDTO
     ) {
