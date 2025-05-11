@@ -36,21 +36,21 @@
                             <label class="form-label d-block">Rank:</label>
 
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="rank" id="gennin" value="Gennin" required>
+                                <input class="form-check-input" type="radio" name="rank" id="gennin" value="Gennin" th:field="*{rank}" required>
                                 <label class="form-check-label" for="gennin">
                                     Gennin
                                 </label>
                             </div>
 
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="rank" id="chunnin" value="Chunnin">
+                                <input class="form-check-input" type="radio" name="rank" id="chunnin" th:field="*{rank}" value="Chunnin">
                                 <label class="form-check-label" for="chunnin">
                                     Chunnin
                                 </label>
                             </div>
 
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="rank" id="jonnin" value="Jonnin">
+                                <input class="form-check-input" type="radio" name="rank" id="jonnin" th:field="*{rank}" value="Jonnin">
                                 <label class="form-check-label" for="jonnin">
                                     Jonnin
                                 </label>
